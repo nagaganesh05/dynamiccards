@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script type="module">
+
+        import { data } from "./data.js"
+        const div = document.createElement("div");
+        for (let objs of data) {
+            const div1 = document.createElement("div");
+            div1.style.width = "400px"
+            div1.style.margin = "20px auto"
+            div1.style.padding = "10px"
+            div1.style.border = "2px solid black"
+            div1.style.textAlign = "center"
+
+
+
+
+            const h1 = document.createElement("h1");
+            h1.style.fontSize = "30px";
+            h1.style.fontFamily = "sans-sherif"
+
+            const img = document.createElement("img");
+            const p = document.createElement("p");
+            p.style.fontSize = "15px"
+
+            const span = document.createElement("span");
+            span.style.display = "flex"
+           
+
+            const span1 = document.createElement("span");
+            span1.style.display = "flex"
+            
+            const button = document.createElement("button");
+            button.addEventListener("click",()=>{alert("more details")})
+            button.style.color="white"
+            button.style.backgroundColor = "#1F51FF"
+            button.style.width = "200px"
+            button.style.height = "50px"
+            button.style.padding = "10px"
+            button.style.margin = "auto"
+            button.style.display="block"
+            button.style.cursor="pointer"
+
+            for (let i in objs) {
+                if (i === "image") {
+                    img.setAttribute("src", img.textContent = objs[i])
+                    img.style.width = "200px"
+                    img.style.height = "200px"
+                }
+                else if (i === "title") {
+                    h1.textContent = objs[i]
+                }
+                else if (i === "description") {
+                    p.textContent = objs[i]
+                }
+                else if (i === "rating") {
+
+                    for (let rate in objs[i]) {
+                        console.log(rate)
+                        if (rate === "rate") {
+                            span.textContent = "Rate" + " : " + objs[i][rate]
+                        }
+                        else if (rate === "count") {
+                            span1.textContent = "count" + " : " + objs[i][rate]
+
+                        }
+                    }
+                }
+
+                button.textContent = "See More"
+            }
+
+            div.appendChild(div1)
+            div1.appendChild(img)
+            div1.appendChild(h1)
+            div1.appendChild(p)
+            div1.appendChild(span)
+            div1.appendChild(span1)
+            div1.appendChild(button)
+
+        }
+
+
+
+        document.body.appendChild(div)
+        div.style.display = "flex"
+        div.style.justifyContent = "space-around"
+        div.style.flexWrap = "wrap"
+        div.style.margin = "auto"
+        div.style.padding = "auto"
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
